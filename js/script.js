@@ -23,12 +23,13 @@ for(const horario of horariosInvalidos){
         horarioTurnos = prompt('Ingrese en que horario');
     }
 }
+
 let nombreTurnos = prompt('Ingrese su nombre');
 let apellidoTurnos = prompt('Ingrese su apellido');
 
 const turnoUsuario = new turnos(diaTurnos, horarioTurnos, nombreTurnos, apellidoTurnos);
 
-alert('Listo agendado tu turno el ' + diaTurnos + ' ' + horarioTurnos + ' ' + nombreTurnos + ' ' + apellidoTurnos);
+alert('Listo! Tu turno quedo agendado, Gracias!');
 console.log(turnoUsuario);
 
 
