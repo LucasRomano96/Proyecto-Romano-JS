@@ -14,18 +14,21 @@ console.log(horariosInvalidos);
 horariosInvalidos.push(8.00, 8.15, 8.30, 8.45);
 console.log(horariosInvalidos);
 
-function horariosOut(){
-    if(horarioTurnos == horariosInvalidos){
-        alert('Esa hora esta fuera de nuestro horario de atencion');
-    }
-}
 let diaTurnos = prompt('Ingrese un dia');
 let horarioTurnos = prompt('Ingrese en que horario');
+
+for(const horario of horariosInvalidos){
+    if(horarioTurnos == horario){
+        alert('Esa hora esta fuera de nuestro horario de atencion')
+        horarioTurnos = prompt('Ingrese en que horario');
+    }
+}
 let nombreTurnos = prompt('Ingrese su nombre');
 let apellidoTurnos = prompt('Ingrese su apellido');
 
 const turnoUsuario = new turnos(diaTurnos, horarioTurnos, nombreTurnos, apellidoTurnos);
 
+alert('Listo agendado tu turno el ' + diaTurnos + ' ' + horarioTurnos + ' ' + nombreTurnos + ' ' + apellidoTurnos);
 console.log(turnoUsuario);
 
 
