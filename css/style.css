@@ -1,0 +1,10 @@
+.form-centrado {
+    display: flex;
+    flex-wrap: wrap;
+  }
+
+  .btn-primario{
+    color: #fff;
+    background-color: #a50dfd;
+    border-color: #a50dfd;
+  }

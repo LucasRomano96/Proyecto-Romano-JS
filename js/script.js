@@ -38,4 +38,8 @@ const turnoUsuario = new turnos(
 
 alert("Listo! Tu turno quedo agendado, Gracias!");
 
+let nuevoMensaje = document.createElement('h2');
+nuevoMensaje.innerHTML = '<h2>Gracias por elegirnos!</h2>';
+document.body.append(nuevoMensaje);
+
 console.log(turnoUsuario);
