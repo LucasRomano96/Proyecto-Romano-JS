@@ -75,14 +75,14 @@ reserva.addEventListener('submit', (e) => {
   if (btnDia.value == diaInvalido) {
     btnDia.value = "";
     alert("Dia no valido, ingrese otro dia.")
-  } else if(btnHorario.value == horarioFueraDeServicio){
-    alert("Ingrese otro horario")
+  }else if(horarioFueraDeServicio(btnHorario.value)){
+    btnHorario.value = "";
   }
 });
 
-function horarioFueraDeServicio(horarios){
+function horarioFueraDeServicio(hora){
   for (const horario of horariosInvalidos) {
-    if (horarioTurnos == horario) 
+    if (hora == horario) 
       alert("Esa hora esta fuera de nuestro horario de atencion");
-    }
-  }
+    }return true;
+  } 
