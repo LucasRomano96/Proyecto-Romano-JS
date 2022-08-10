@@ -75,14 +75,28 @@ reserva.addEventListener('submit', (e) => {
   if (btnDia.value == diaInvalido) {
     btnDia.value = "";
     alert("Dia no valido, ingrese otro dia.")
-  }else if(horarioFueraDeServicio(btnHorario.value)){
+  }else if(btnHorario.value <= 8 || btnHorario.value >= 22){
     btnHorario.value = "";
+    alert("Esa hora esta fuera de nuestro horario de atencion");
   }
 });
 
-function horarioFueraDeServicio(hora){
+/* function horarioFueraDeServicio(hora){
   for (const horario of horariosInvalidos) {
     if (hora == horario) 
       alert("Esa hora esta fuera de nuestro horario de atencion");
     }return true;
   } 
+ */
+
+  /* localStorage.setItem('nombreUsuario'); */
+
+  let nombreUsuario = document.getElementById('validationServer03');
+
+  let btnLogin = document.getElementById('btn-login');
+
+  btnLogin.addEventListener('click', ()=>{
+    localStorage.setItem('validationServer03', nombreUsuario.value);
+  })
+
+  localStorage.setItem('nombreUsuario');
