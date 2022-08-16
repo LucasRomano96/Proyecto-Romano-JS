@@ -1,5 +1,13 @@
-const mensaje = alert("Bienvendidas, los dias y horarios del salon de belleza son de Lunes a Sabado, desde las 9hs hasta 21hs.");
-const mensaje2 = alert("Para pedir un turno ingrese dia, horario, nombre y apellido por favor.");
+const mensaje = Swal.fire(
+  "Bienvenidas, solicite un turno de lunes a sabados dentro de las 9hs y 20hs",
+  "You clicked the button!",
+  "success"
+);
+const mensaje2 = Swal.fire(
+  "Para pedir un turno ingrese dia, horario, nombre y apellido por favor",
+  "You clicked the button!",
+  "success"
+);
 
 function turnos(dia, horario, nombre, apellido) {
   this.dia = dia;
@@ -19,8 +27,6 @@ horariosInvalidos.push(8.0, 8.15, 8.3, 8.45);
 console.log(horariosInvalidos);
 
 let diaInvalido = "Domingo";
-
-
 
 /* let diaTurnos = prompt("Ingrese un dia"); */
 /*  let horarioTurnos = prompt("Ingrese en que horario");
@@ -50,32 +56,32 @@ document.body.append(nuevoMensaje);
 /* console.log(turnoUsuario); */
 
 const btnDia = document.getElementById("formulario");
-btnDia.addEventListener('input', () => {
+btnDia.addEventListener("input", () => {
   console.log(btnDia.value);
 });
 
 const btnHorario = document.getElementById("validationServer02");
-btnHorario.addEventListener('input', () => {
+btnHorario.addEventListener("input", () => {
   console.log(btnHorario.value);
 });
 
 const btnNombre = document.getElementById("validationServer03");
-btnNombre.addEventListener('input', () => {
+btnNombre.addEventListener("input", () => {
   console.log(btnNombre.value);
 });
 
 const btnApellido = document.getElementById("validationServer04");
-btnApellido.addEventListener('input', () => {
+btnApellido.addEventListener("input", () => {
   console.log(btnApellido.value);
 });
 
 const reserva = document.getElementById("formularioPrincipal");
-reserva.addEventListener('submit', (e) => {
+reserva.addEventListener("submit", (e) => {
   e.preventDefault();
   if (btnDia.value == diaInvalido) {
     btnDia.value = "";
-    alert("Dia no valido, ingrese otro dia.")
-  }else if(btnHorario.value <= 8 || btnHorario.value >= 22){
+    alert("Dia no valido, ingrese otro dia.");
+  } else if (btnHorario.value <= 8 || btnHorario.value >= 22) {
     btnHorario.value = "";
     alert("Esa hora esta fuera de nuestro horario de atencion");
   }
@@ -89,9 +95,9 @@ reserva.addEventListener('submit', (e) => {
   } 
  */
 
-  /* localStorage.setItem('nombreUsuario'); */
+/* localStorage.setItem('nombreUsuario'); */
 
-  let nombreUsuario = document.getElementById('validationServer03');
+/*  let nombreUsuario = document.getElementById('validationServer03');
 
   let btnLogin = document.getElementById('btn-login');
 
@@ -100,3 +106,11 @@ reserva.addEventListener('submit', (e) => {
   })
 
   localStorage.setItem('nombreUsuario');
+ */
+const usuario = {
+  nombre: "Julia",
+  edad: 30,
+};
+
+const nombreUsuario = usuario.nombre || "nombre inexistente";
+console.log(nombreUsuario);
