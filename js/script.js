@@ -4,7 +4,7 @@ const mensaje = Swal.fire(
   "success"
 );
 const mensaje2 = Swal.fire(
-  "Para pedir un turno ingrese dia, horario, nombre y apellido por favor",
+  "Para pedir un turno ingrese dia, horario, nombre, apellido y email por favor",
   "You clicked the button!",
   "success"
 );
@@ -28,32 +28,11 @@ console.log(horariosInvalidos);
 
 let diaInvalido = "Domingo";
 
-/* let diaTurnos = prompt("Ingrese un dia"); */
-/*  let horarioTurnos = prompt("Ingrese en que horario");
-
-for (const horario of horariosInvalidos) {
-  if (horarioTurnos == horario) {
-    alert("Esa hora esta fuera de nuestro horario de atencion");
-    horarioTurnos = prompt("Ingrese en que horario");
-  }
-}
-
-let nombreTurnos = prompt("Ingrese su nombre");
-let apellidoTurnos = prompt("Ingrese su apellido"); */
-
-/* const turnoUsuario = new turnos(
-  diaTurnos,
-  horarioTurnos,
-  nombreTurnos,
-  apellidoTurnos);  */
-
-/* alert("Listo! Tu turno quedo agendado, Gracias!"); */
 
 let nuevoMensaje = document.createElement("h2");
 nuevoMensaje.innerHTML = "<h2>Gracias por elegirnos!</h2>";
 document.body.append(nuevoMensaje);
 
-/* console.log(turnoUsuario); */
 
 const btnDia = document.getElementById("formulario");
 btnDia.addEventListener("input", () => {
@@ -75,6 +54,11 @@ btnApellido.addEventListener("input", () => {
   console.log(btnApellido.value);
 });
 
+const btnEmail = document.getElementById("validationServer05");
+btnEmail.addEventListener("input", () =>{
+  console.log(btnEmail.value);
+})
+
 const reserva = document.getElementById("formularioPrincipal");
 reserva.addEventListener("submit", (e) => {
   e.preventDefault();
@@ -84,16 +68,10 @@ reserva.addEventListener("submit", (e) => {
   } else if (btnHorario.value <= 8 || btnHorario.value >= 22) {
     btnHorario.value = "";
     alert("Esa hora esta fuera de nuestro horario de atencion");
+  } else{
+    Swal.fire(`Gracias! Su turno ha sido reservado para el dia ${btnDia.value}, a las ${btnHorario.value}`);
   }
 });
-
-/* function horarioFueraDeServicio(hora){
-  for (const horario of horariosInvalidos) {
-    if (hora == horario) 
-      alert("Esa hora esta fuera de nuestro horario de atencion");
-    }return true;
-  } 
- */
 
 /* localStorage.setItem('nombreUsuario'); */
 
@@ -107,10 +85,16 @@ reserva.addEventListener("submit", (e) => {
 
   localStorage.setItem('nombreUsuario');
  */
-const usuario = {
-  nombre: "Julia",
-  edad: 30,
-};
 
-const nombreUsuario = usuario.nombre || "nombre inexistente";
-console.log(nombreUsuario);
+  function reset(){
+    btnDia.value = "";
+    btnApellido.value = "";
+    btnHorario.value = "";
+    btnNombre.value = "";
+  }
+
+  let URLDireccion ='https://emailvalidation.abstractapi.com/v1/?api_key=22e90ff2ee88435390dc584c82e2ec30&email=lucasromano96@gmail.com';
+  
+  console.log(fetch('https://emailvalidation.abstractapi.com/v1/?api_key=22e90ff2ee88435390dc584c82e2ec30&email=lucasromano96@gmail.com'));
+
+  fetch(URLDireccion)
