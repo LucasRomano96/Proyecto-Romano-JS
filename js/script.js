@@ -98,3 +98,7 @@ reserva.addEventListener("submit", (e) => {
   console.log(fetch('https://emailvalidation.abstractapi.com/v1/?api_key=22e90ff2ee88435390dc584c82e2ec30&email=lucasromano96@gmail.com'));
 
   fetch(URLDireccion)
+  .then((response)=>response.json())
+  .then((data)=>{
+    console.log(data);
+  })
