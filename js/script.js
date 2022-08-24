@@ -93,12 +93,16 @@ reserva.addEventListener("submit", (e) => {
     btnNombre.value = "";
   }
 
-  let URLDireccion ='https://emailvalidation.abstractapi.com/v1/?api_key=22e90ff2ee88435390dc584c82e2ec30&email=lucasromano96@gmail.com';
-  
-  console.log(fetch('https://emailvalidation.abstractapi.com/v1/?api_key=22e90ff2ee88435390dc584c82e2ec30&email=lucasromano96@gmail.com'));
+  function httpGetAsync(url, callback) {
+    let xmlHttp = new XMLHttpRequest();
+    xmlHttp.onreadystatechange = function() {
+        if (xmlHttp.readyState === 4 && xmlHttp.status === 200)
+        callback(xmlHttp.responseText);
+    }
+    xmlHttp.open("GET", url, true); 
+    xmlHttp.send(null);
+}
 
-  fetch(URLDireccion)
-  .then((response)=>response.json())
-  .then((data)=>{
-    console.log(data);
-  })
+var url = "https://emailvalidation.abstractapi.com/v1/?api_key=22e90ff2ee88435390dc584c82e2ec30&email=lucasromano96@gmail.com"
+
+httpGetAsync(url)
