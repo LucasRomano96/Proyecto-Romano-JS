@@ -73,19 +73,6 @@ reserva.addEventListener("submit", (e) => {
   }
 });
 
-/* localStorage.setItem('nombreUsuario'); */
-
-/*  let nombreUsuario = document.getElementById('validationServer03');
-
-  let btnLogin = document.getElementById('btn-login');
-
-  btnLogin.addEventListener('click', ()=>{
-    localStorage.setItem('validationServer03', nombreUsuario.value);
-  })
-
-  localStorage.setItem('nombreUsuario');
- */
-
   function reset(){
     btnDia.value = "";
     btnApellido.value = "";
@@ -93,16 +80,8 @@ reserva.addEventListener("submit", (e) => {
     btnNombre.value = "";
   }
 
-  function httpGetAsync(url, callback) {
-    let xmlHttp = new XMLHttpRequest();
-    xmlHttp.onreadystatechange = function() {
-        if (xmlHttp.readyState === 4 && xmlHttp.status === 200)
-        callback(xmlHttp.responseText);
-    }
-    xmlHttp.open("GET", url, true); 
-    xmlHttp.send(null);
-}
-
-var url = "https://emailvalidation.abstractapi.com/v1/?api_key=22e90ff2ee88435390dc584c82e2ec30&email=lucasromano96@gmail.com"
-
-httpGetAsync(url)
+  $(document).ready(function(){
+    $.getJSON('data.json', function(response){
+      console.log(JSON.stringify(response));
+    });
+  });
