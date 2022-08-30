@@ -59,6 +59,26 @@ btnEmail.addEventListener("input", () =>{
   console.log(btnEmail.value);
 })
 
+class Usuario{
+  constructor(apellido, email, horario, nombre, dia){
+    this.apellido = apellido;
+    this.email = email;
+    this.horario = horario;
+    this.nombre = nombre;
+    this.dia = dia;
+  }
+}
+/* let usuario = new Usuario(btnApellido.value, btnEmail.value, btnHorario.value, btnNombre.value, btnDia.value);
+ */
+/* function formularioData() {
+  if (btnApellido.value != "") {
+    usuario.push(btnApellido.value)
+    console.log(usuario[btnApellido].value);
+  }
+}
+let usuario = []; */
+/* usuario.push(btnApellido.value, btnEmail.value, btnHorario.value, btnNombre.value, btnDia.value); */
+
 const reserva = document.getElementById("formularioPrincipal");
 reserva.addEventListener("submit", (e) => {
   e.preventDefault();
@@ -71,17 +91,26 @@ reserva.addEventListener("submit", (e) => {
   } else{
     Swal.fire(`Gracias! Su turno ha sido reservado para el dia ${btnDia.value}, a las ${btnHorario.value}`);
   }
+  verificarEmail(btnEmail.value);
+  reset();
 });
+
 
   function reset(){
     btnDia.value = "";
     btnApellido.value = "";
     btnHorario.value = "";
     btnNombre.value = "";
+    btnEmail.value = "";
   }
 
-  $(document).ready(function(){
-    $.getJSON('data.json', function(response){
-      console.log(JSON.stringify(response));
-    });
-  });
+async function verificarEmail(emailSolicitante){
+  let API =  `https://disify.com/api/email/${emailSolicitante}`;
+  const resp = await fetch(API);
+  const dataJason = await resp.json();
+  console.log(dataJason);
+};
+
+
+ 
+
