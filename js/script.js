@@ -64,6 +64,10 @@ reserva.addEventListener("submit", (e) => {
       reset();
     }
   },1700)
+  localStorage.setItem('nombreUsuario', nombreUsuario.value);
+  localStorage.setItem('apellidoUsuario',apellidoUsuario.value);
+  localStorage.setItem('diaUsuario',diaUsuario.value);
+  localStorage.setItem('horarioUsuario',horarioUsuario.value);
 });
 
 
@@ -93,6 +97,12 @@ function cambiarEmail(emailSolicitante) {
     }
   })
 };
+
+let nombreUsuario = document.getElementById("validationServer03");
+let apellidoUsuario = document.getElementById("validationServer04");
+let diaUsuario = document.getElementById("formulario");
+let horarioUsuario = document.getElementById("validationServer02");
+
 
 
 const mensaje = Swal.fire(
