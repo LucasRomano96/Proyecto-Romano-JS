@@ -49,10 +49,10 @@ reserva.addEventListener("submit", (e) => {
   if (btnDia.value == diaInvalido) {
     btnDia.value = "";
     alert("Dia no valido, ingrese otro dia.");
-  }
-  if (cambiarEmail(btnEmail.value) == false) {
+  }if (cambiarEmail(btnEmail.value) == false) {
     btnEmail.value = "";
   } 
+  
   setTimeout(() => {
     if (btnEmail.value !="") {
       Swal.fire(`Gracias! Su turno ha sido reservado para el dia ${btnDia.value}, a las ${btnHorario.value}`);
@@ -111,10 +111,6 @@ function turnos(dia, horario, nombre, apellido) {
   this.nombre = nombre;
   this.apellido = apellido;
 }
-
-console.log(horariosInvalidos);
-horariosInvalidos.push(8.0, 8.15, 8.3, 8.45);
-console.log(horariosInvalidos);
 
 let diaInvalido = "Domingo";
 
