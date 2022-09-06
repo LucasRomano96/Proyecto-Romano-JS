@@ -45,14 +45,18 @@ reserva.addEventListener("submit", (e) => {
   e.preventDefault();
   usuario = new Usuario(btnApellido.value, btnEmail.value, btnHorario.value, btnNombre.value, btnDia.value);
   console.log(usuario);
-  verificarEmail(btnEmail.value);
-  if (btnDia.value == diaInvalido) {
-    btnDia.value = "";
-    alert("Dia no valido, ingrese otro dia.");
-  }if (cambiarEmail(btnEmail.value) == false) {
+  verificarEmail(btnEmail.value);  
+  if (cambiarEmail(btnEmail.value) == false) {
     btnEmail.value = "";
-  } 
-  
+  }
+  let day = new Date(elDate.value ).getUTCDay();
+  elDate.setCustomValidity('');
+    if( day == 0 ){
+       elDate.setCustomValidity('Domingos no disponibles, por favor seleccione otro día');
+    } else {
+       elDate.setCustomValidity('');
+    }
+    if(!elForm.checkValidity()) {elSubmit.click()};
   setTimeout(() => {
     if (btnEmail.value !="") {
       Swal.fire(`Gracias! Su turno ha sido reservado para el dia ${btnDia.value}, a las ${btnHorario.value}`);
@@ -98,6 +102,23 @@ let apellidoUsuario = document.getElementById("validationServer04");
 let diaUsuario = document.getElementById("formulario");
 let horarioUsuario = document.getElementById("validationServer02");
 
+let elDate = document.getElementById('formulario');
+let elForm = document.getElementById('formularioPrincipal');
+let elSubmit = document.getElementById('btn-login');
+
+/* function sinDomingos(){
+  let day = new Date(elDate.value ).getUTCDay();
+  elDate.setCustomValidity('');
+    if( day == 0 ){
+       elDate.setCustomValidity('Domingos no disponibles, por favor seleccione otro día');
+    } else {
+       elDate.setCustomValidity('');
+    }
+    if(!elForm.checkValidity()) {elSubmit.click()};
+} */
+function obtenerfechafinf1(){
+  sinDomingos();
+}
 
 const mensaje2 = Swal.fire(
   "Para pedir un turno ingrese dia, horario, nombre, apellido y email por favor",
@@ -112,7 +133,6 @@ function turnos(dia, horario, nombre, apellido) {
   this.apellido = apellido;
 }
 
-let diaInvalido = "Domingo";
 
 
  
