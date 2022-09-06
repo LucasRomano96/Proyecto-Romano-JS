@@ -53,7 +53,6 @@ reserva.addEventListener("submit", (e) => {
   if (cambiarEmail(btnEmail.value) == false) {
     btnEmail.value = "";
   } 
-  
   setTimeout(() => {
     if (btnEmail.value !="") {
       Swal.fire(`Gracias! Su turno ha sido reservado para el dia ${btnDia.value}, a las ${btnHorario.value}`);
@@ -100,12 +99,6 @@ let diaUsuario = document.getElementById("formulario");
 let horarioUsuario = document.getElementById("validationServer02");
 
 
-
-const mensaje = Swal.fire(
-  "Bienvenidas, solicite un turno de lunes a sabados dentro de las 9hs y 20hs",
-  "You clicked the button!",
-  "success"
-);
 const mensaje2 = Swal.fire(
   "Para pedir un turno ingrese dia, horario, nombre, apellido y email por favor",
   "You clicked the button!",
