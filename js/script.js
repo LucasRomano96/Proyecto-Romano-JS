@@ -49,14 +49,7 @@ reserva.addEventListener("submit", (e) => {
   if (cambiarEmail(btnEmail.value) == false) {
     btnEmail.value = "";
   }
-  let day = new Date(elDate.value ).getUTCDay();
-  elDate.setCustomValidity('');
-    if( day == 0 ){
-       elDate.setCustomValidity('Domingos no disponibles, por favor seleccione otro día');
-    } else {
-       elDate.setCustomValidity('');
-    }
-    if(!elForm.checkValidity()) {elSubmit.click()};
+  sinDomingos();
   setTimeout(() => {
     if (btnEmail.value !="") {
       Swal.fire(`Gracias! Su turno ha sido reservado para el dia ${btnDia.value}, a las ${btnHorario.value}`);
@@ -68,7 +61,6 @@ reserva.addEventListener("submit", (e) => {
   localStorage.setItem('diaUsuario',diaUsuario.value);
   localStorage.setItem('horarioUsuario',horarioUsuario.value);
 });
-
 
   function reset(){
     btnDia.value = "";
@@ -106,19 +98,16 @@ let elDate = document.getElementById('formulario');
 let elForm = document.getElementById('formularioPrincipal');
 let elSubmit = document.getElementById('btn-login');
 
-/* function sinDomingos(){
-  let day = new Date(elDate.value ).getUTCDay();
-  elDate.setCustomValidity('');
+function sinDomingos(){
+  let day = new Date(btnDia.value ).getUTCDay();
+  btnDia.setCustomValidity('');
     if( day == 0 ){
        elDate.setCustomValidity('Domingos no disponibles, por favor seleccione otro día');
     } else {
        elDate.setCustomValidity('');
     }
     if(!elForm.checkValidity()) {elSubmit.click()};
-} */
-function obtenerfechafinf1(){
-  sinDomingos();
-}
+} 
 
 const mensaje2 = Swal.fire(
   "Para pedir un turno ingrese dia, horario, nombre, apellido y email por favor",
